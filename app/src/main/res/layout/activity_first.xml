@@ -25,7 +25,7 @@
     android:layout_marginBottom="10dp"
     android:background="#D6D6CD"
     android:gravity="center_vertical"
-    android:hint="ID"
+    android:hint="@string/edit_userID"
     android:inputType="textPersonName"
     android:paddingLeft="20dp"
     android:textSize="20sp" />
@@ -39,7 +39,8 @@
     android:paddingLeft="20dp"
     android:background="#D6D6CD"
     android:gravity="center_vertical"
-    android:hint="PW"
+    android:maxLength="12"
+    android:hint="@string/edit_userPW"
     android:inputType="textPassword"
     android:textSize="20sp" />
 
