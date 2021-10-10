@@ -12,9 +12,10 @@
     android:layout_alignParentTop="true"
     android:layout_centerHorizontal="true"
     android:layout_marginTop="50dp"
-    android:textSize="40sp"
+    android:text="Health Mate"
     android:textColor="#009fb6"
-    android:text="Health Mate" />
+    android:textSize="40sp"
+    android:textStyle="bold" />
 
   <EditText
     android:id="@+id/text_ID"
@@ -36,12 +37,12 @@
     android:layout_height="50dp"
     android:layout_centerInParent="true"
     android:layout_marginBottom="20dp"
-    android:paddingLeft="20dp"
     android:background="#D6D6CD"
     android:gravity="center_vertical"
-    android:maxLength="12"
     android:hint="@string/edit_userPW"
     android:inputType="textPassword"
+    android:maxLength="12"
+    android:paddingLeft="20dp"
     android:textSize="20sp" />
 
   <Button
