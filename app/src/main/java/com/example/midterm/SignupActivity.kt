@@ -24,13 +24,15 @@ class SignupActivity : AppCompatActivity() {
         val radio_Decline : RadioButton = findViewById(R.id.radio_Decline)
         val btn_checkID : Button = findViewById(R.id.btn_checkID);
         val btn_submit :Button = findViewById(R.id.btn_submitSign)
+
         var isIdChecked = false;
 
         val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
         val editor = sharedPreferences.edit();
+        val myID = sharedPreferences.getString("id",null)
             
         btn_checkID.setOnClickListener {
-            val myID = sharedPreferences.getString("id",null)
+
             if(myID == txt_userID.text.toString()){
                 isIdChecked = false;
                 Toast.makeText(this, "다른 아이디를 사용해주세요.", Toast.LENGTH_SHORT).show()
@@ -55,17 +57,22 @@ class SignupActivity : AppCompatActivity() {
             }else if (!isIdChecked){
                 Toast.makeText(this, "아이디 중복 검사를 완료해 주세요.", Toast.LENGTH_SHORT).show()
             }else{
+                if(myID != txt_userID.text.toString()){
+                    editor.putString("id",txt_userID.text.toString()); // 아이디
+                    editor.putString("pw",txt_userPW.text.toString()); // 비밀번호
+                    editor.putString("phoneNumber",txt_PhoneNumber.text.toString());
+                    editor.putString("address",txt_Address.text.toString());
+                    editor.putString("name",txt_userName.text.toString());
+                    editor.putBoolean("isLogin",false);
+                    editor.apply();
+                    Toast.makeText(this,"회원가입 성공!",Toast.LENGTH_LONG).show()
+                    finish();
+                }else {
+                    Toast.makeText(this,"아이디 중복검사를 다시 해주세요.",Toast.LENGTH_SHORT).show()
+                    isIdChecked = false
+                }
                 
-                editor.putString("id",txt_userID.text.toString()); // 아이디
-                editor.putString("pw",txt_userPW.text.toString()); // 비밀번호
-                editor.putString("phoneNumber",txt_PhoneNumber.text.toString());
-                editor.putString("address",txt_Address.text.toString());
-                editor.putString("name",txt_userName.text.toString());
-                editor.putBoolean("isLogin",false);
-                editor.apply();
-                Toast.makeText(this,"회원가입 성공!",Toast.LENGTH_LONG).show()
 
-                finish();
             }
 
 
