@@ -28,13 +28,12 @@ class MainActivity : AppCompatActivity() {
         val btn_signup : Button = findViewById(R.id.btn_signup);
         val btn_login : Button = findViewById(R.id.btn_login);
         val btn_guestShop : Button = findViewById(R.id.btn_guestShop);
-        val text_isLogin : TextView = findViewById(R.id.text_isLogin);
+
         val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE);
         val editor = sharedPreferences.edit();
         editor.putBoolean("isLogin",false);
         editor.apply();
 
-        text_isLogin.text = sharedPreferences.getBoolean("isLogin",false).toString()
 
         btn_login.setOnClickListener{
             val inputID : TextView = findViewById(R.id.text_ID);
@@ -46,15 +45,14 @@ class MainActivity : AppCompatActivity() {
             Log.e("tag",id.toString());
             Log.e("tag",pw.toString());
             if( id == null || pw == null){
-                Toast.makeText(this, "저장된 로그인 값이 없습니다.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "저장된 로그인 값이 없습니다.", Toast.LENGTH_SHORT).show()
             }else if (inputID.text.toString() == id && inputPW.text.toString() == pw){
-                Toast.makeText(this, "로그인 성공!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "로그인 성공!", Toast.LENGTH_SHORT).show()
                 editor.putBoolean("isLogin",true);
                 editor.apply();
-                text_isLogin.text = sharedPreferences.getBoolean("isLogin",false).toString();
                 startActivity(ShopIntent);
             }else{
-                Toast.makeText(this, "아이디 또는 비밀번호를 확인해주세요 ", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "아이디 또는 비밀번호를 확인해주세요 ", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -65,7 +63,6 @@ class MainActivity : AppCompatActivity() {
         btn_guestShop.setOnClickListener{
             editor.putBoolean("isLogin",false);
             editor.apply();
-            text_isLogin.text = sharedPreferences.getBoolean("isLogin",false).toString()
             Toast.makeText(this, "비회원입니다", Toast.LENGTH_SHORT).show()
 
             startActivity(ShopIntent)

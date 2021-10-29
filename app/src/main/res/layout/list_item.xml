@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  >
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/myborder">
+
+    <ImageView
+      android:id="@+id/iv_profile"
+      android:layout_width="60dp"
+      android:layout_height="60dp"
+      android:layout_margin="5dp" />
+
+    <TextView
+      android:id="@+id/id_profileName"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="10dp"
+      android:text="김호준"
+      android:textColor="#000000"
+      android:textSize="30sp"
+      android:textStyle="bold" />
+
+    <Button
+      android:id="@+id/btn_delete"
+      android:layout_width="70dp"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center|right"
+      android:textSize="15sp"
+      android:text="삭제" />
+
+  </LinearLayout>
+
+</LinearLayout>

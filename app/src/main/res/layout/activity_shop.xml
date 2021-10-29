@@ -1,21 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:orientation="vertical">
-
-  <Button
-    android:id="@+id/btn_userInfo"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="회원정보"
-    tools:layout_editor_absoluteX="16dp"
-    tools:layout_editor_absoluteY="16dp" />
+  android:orientation="vertical"
+  android:weightSum="10">
 
   <TextView
-    android:id="@+id/text_isLoginShop"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="TextView" />
+
+    android:id="@+id/txt_ShopTitle"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:text="MATE"
+    android:textColor="#000000"
+    android:textSize="40sp"
+    android:textStyle="bold" />
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rv_profile"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="7" />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:gravity="center"
+    android:layout_weight="2">
+
+    <Button
+      android:id="@+id/btn_userInfo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="회원정보"
+      android:layout_marginRight="30dp"
+      android:layout_gravity="center|center_horizontal"/>
+
+    <Button
+      android:id="@+id/btn_addMate"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_vertical|end"
+      android:text="메이트 추가" />
+  </LinearLayout>
+
+
 </LinearLayout>

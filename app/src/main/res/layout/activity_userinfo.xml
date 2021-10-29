@@ -8,7 +8,7 @@
     android:id="@+id/txt_InfoTitle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="User-Info"
+    android:text="회원정보"
     android:textSize="25sp" />
 
   <TextView

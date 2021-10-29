@@ -8,6 +8,20 @@ import org.w3c.dom.Text
 
 class SignupActivity : AppCompatActivity() {
 
+    fun checkPhoneNumber(number : String) : Boolean {
+        if(number.length == 13) {
+            for(i in 0..12){
+                if(i == 3 || i== 8 ){
+                    if(!number[i].equals("-")){
+                        return false
+                    }
+                }
+            }
+            return true
+        }
+        return false
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,13 +63,15 @@ class SignupActivity : AppCompatActivity() {
         btn_submit.setOnClickListener{
             if(txt_userID.text.toString().length == 0 || txt_checkPW.text.toString().length == 0 || txt_userPW.text.toString().length == 0 ||
                     txt_userName.text.toString().length == 0 || txt_PhoneNumber.text.toString().length == 0 || txt_Address.text.toString().length == 0){
-                Toast.makeText(this,"모든 정보를 입력해 주세요.",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"모든 정보를 입력해 주세요.",Toast.LENGTH_SHORT).show()
             }else if (!radio_Accept.isChecked){
-                Toast.makeText(this,"약관에 동의해 주세요.",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"약관에 동의해 주세요.",Toast.LENGTH_SHORT).show()
             }else if(txt_checkPW.text.toString() != txt_userPW.text.toString()){
-                Toast.makeText(this,"비밀번호가 일치하지 않습니다.",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"비밀번호가 일치하지 않습니다.",Toast.LENGTH_SHORT).show()
             }else if (!isIdChecked){
                 Toast.makeText(this, "아이디 중복 검사를 완료해 주세요.", Toast.LENGTH_SHORT).show()
+            }else if(!checkPhoneNumber(txt_PhoneNumber.text.toString())){
+                Toast.makeText(this,"xxx-xxxx-xxxx형식에 맞게 입력해주세요.",Toast.LENGTH_SHORT).show()
             }else{
                 if(myID != txt_userID.text.toString()){
                     editor.putString("id",txt_userID.text.toString()); // 아이디
@@ -65,7 +81,7 @@ class SignupActivity : AppCompatActivity() {
                     editor.putString("name",txt_userName.text.toString());
                     editor.putBoolean("isLogin",false);
                     editor.apply();
-                    Toast.makeText(this,"회원가입 성공!",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this,"회원가입 성공!",Toast.LENGTH_SHORT).show()
                     finish();
                 }else {
                     Toast.makeText(this,"아이디 중복검사를 다시 해주세요.",Toast.LENGTH_SHORT).show()

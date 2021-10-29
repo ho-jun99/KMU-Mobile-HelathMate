@@ -71,13 +71,7 @@
     android:layout_centerInParent="true"
     android:layout_marginBottom="50dp"
     android:backgroundTint="#2193b0"
-    android:text="비회원 상품보기" />
-
-  <TextView
-    android:id="@+id/text_isLogin"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="TextView" />
+    android:text="비회원 메이트구경하기" />
 
 
 </RelativeLayout>
