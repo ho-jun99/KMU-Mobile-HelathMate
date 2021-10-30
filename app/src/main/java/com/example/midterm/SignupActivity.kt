@@ -2,17 +2,27 @@ package com.example.midterm
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.room.Room
 import org.w3c.dom.Text
 
 class SignupActivity : AppCompatActivity() {
 
+
+    // 핸드폰번식 형식검사 함수
     fun checkPhoneNumber(number : String) : Boolean {
         if(number.length == 13) {
             for(i in 0..12){
-                if(i == 3 || i== 8 ){
-                    if(!number[i].equals("-")){
+                if(i == 3){
+                    Log.e("PHONE_NUMBER",number[i].toString())
+                    if(!number[i].toString().equals("-")){
+                        return false
+                    }
+                }
+                if( i== 8){
+                    Log.e("PHONE_NUMBER",number[i].toString())
+                    if(!number[i].toString().equals("-")){
                         return false
                     }
                 }
@@ -20,6 +30,11 @@ class SignupActivity : AppCompatActivity() {
             return true
         }
         return false
+    }
+
+    //정규식 (숫자,문자,특수문자중, 2가지 포함 6~12)
+    fun isPasswordFormat(password: String): Boolean {
+        return !password.matches("^(?=.*[a-zA-Z0-9])(?=.*[a-zA-Z!@#\$%^&*])(?=.*[0-9!@#\$%^&*]).{6,12}\$".toRegex())
     }
 
 
@@ -33,9 +48,7 @@ class SignupActivity : AppCompatActivity() {
         val txt_userName : TextView = findViewById(R.id.edit_name)
         val txt_PhoneNumber : TextView = findViewById(R.id.edit_PhoneNumber)
         val txt_Address : TextView = findViewById(R.id.edit_address)
-        val radio_groupAccept : RadioGroup = findViewById(R.id.radio_groupAccept)
         val radio_Accept : RadioButton = findViewById(R.id.radio_Accept)
-        val radio_Decline : RadioButton = findViewById(R.id.radio_Decline)
         val btn_checkID : Button = findViewById(R.id.btn_checkID);
         val btn_submit :Button = findViewById(R.id.btn_submitSign)
 
@@ -72,6 +85,8 @@ class SignupActivity : AppCompatActivity() {
                 Toast.makeText(this, "아이디 중복 검사를 완료해 주세요.", Toast.LENGTH_SHORT).show()
             }else if(!checkPhoneNumber(txt_PhoneNumber.text.toString())){
                 Toast.makeText(this,"xxx-xxxx-xxxx형식에 맞게 입력해주세요.",Toast.LENGTH_SHORT).show()
+            }else if (isPasswordFormat(txt_userPW.text.toString())){
+                Toast.makeText(this, "6~12자리, 숫자,문자,특수문자를 포함시켜주세요", Toast.LENGTH_SHORT).show()
             }else{
                 if(myID != txt_userID.text.toString()){
                     editor.putString("id",txt_userID.text.toString()); // 아이디

@@ -55,7 +55,8 @@
       android:id="@+id/edit_ruleOfpw"
       android:layout_width="100dp"
       android:layout_height="wrap_content"
-      android:text="@string/ruleOfPW"
+      android:text="@string/pwReg"
+      android:textColor="#000000"
       android:textSize="10sp" />
   </LinearLayout>
 

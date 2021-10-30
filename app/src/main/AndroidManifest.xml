@@ -13,7 +13,6 @@
     android:supportsRtl="true"
     android:theme="@style/Theme.MidTerm">
     <activity android:name=".ShopActivity"/>
-    <activity android:name=".UserInfoActivity"/>
     <activity
       android:name=".SignupActivity"
       android:exported="true" />

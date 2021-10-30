@@ -63,14 +63,10 @@ class ShopActivity : AppCompatActivity(){
         binding.rvProfile.setHasFixedSize(true)
         binding.rvProfile.adapter = ProfileAdapter(profileList)
 
-        //회원 추가
-//        binding.btnAddMate.setOnClickListener {
-//            profileList.add(Profiles(R.drawable.junho.toString().toUri(),"이준호"))
-//            binding.rvProfile.adapter = ProfileAdapter(profileList)
-//        }
 
         //메이트 추가 다이얼로
         binding.btnAddMate.setOnClickListener {
+            myUri =""
             val dialogView = LayoutInflater.from(this).inflate(R.layout.select_gallery,null);
             val myBuilder = AlertDialog.Builder(this)
                 .setView(dialogView)
@@ -89,7 +85,9 @@ class ShopActivity : AppCompatActivity(){
 
             btn_post.setOnClickListener {
                 if(txt_addName.text.toString().length == 0 ) {
-                    Toast.makeText(this, "이름을 입력해주세", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "이름을 입력해주세요", Toast.LENGTH_SHORT).show()
+                }else if(myUri.equals("")){
+                    Toast.makeText(this, "사진을 선택해 주세요", Toast.LENGTH_SHORT).show()
                 }else {
                     profileList.add(Profiles(myUri.toUri(),txt_addName.text.toString()))
                     binding.rvProfile.adapter = ProfileAdapter(profileList)
